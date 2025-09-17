@@ -183,9 +183,7 @@ li {
     }
 
     .header img {
-        width: 60px;
-        top: 25px;
-        right: 68px;
+        display: none;
     }
 
     body, html {
