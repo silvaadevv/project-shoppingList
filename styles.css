@@ -138,4 +138,60 @@ li {
     background-color: #FEE2E2;
 }
 
+@media (max-width: 900px) {
+    .container,
+    #container-foods {
+        width: 95%;
+        max-width: 350px;
+        margin: 20px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .novo-item {
+        width: 100%;
+        padding: 6px 10px;
+        margin-right: 0;
+        text-align: left;
+        box-sizing: border-box;
+    }
+
+    #adicionar {
+        width: 100%;
+        padding: 6px;
+        box-sizing: border-box;
+    }
+
+    .lista {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .lista li {
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .header img {
+        width: 60px;
+        top: 25px;
+        right: 68px;
+    }
+
+    body, html {
+    overflow-x: hidden;
+}
+
+    
+}
 
