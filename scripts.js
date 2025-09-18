@@ -1,24 +1,41 @@
-const input = document.getElementsByClassName("novo-item")[0];
+const input = document.querySelector(".novo-item");
+const categoria = document.getElementById("categoria");
 const but = document.getElementById("adicionar");
-const lista = document.getElementsByClassName("lista")[0];
+
+const listaComida = document.querySelector(".comida-lista");
+const listaLimpeza = document.querySelector(".limpeza-lista");
+
+const containerFoods = document.getElementById("container-foods");
+const containerCleaning = document.getElementById("container-cleaning");
 
 function salvarLista() {
-    const itens = [];
-    lista.querySelectorAll("li").forEach(li => {
+    const itens = {
+        comida: [],
+        limpeza: []
+    };
+
+    listaComida.querySelectorAll("li").forEach(li => {
         const texto = li.querySelector("span").textContent;
         const marcado = li.querySelector("input[type='checkbox']").checked;
-        itens.push({ texto, marcado });
+        itens.comida.push({ texto, marcado });
     });
+
+    listaLimpeza.querySelectorAll("li").forEach(li => {
+        const texto = li.querySelector("span").textContent;
+        const marcado = li.querySelector("input[type='checkbox']").checked;
+        itens.limpeza.push({ texto, marcado });
+    });
+
     localStorage.setItem("listaCompras", JSON.stringify(itens));
+    mostrarListas();
 }
 
-function criarItem(texto, marcado = false) {
+function criarItem(texto, marcado = false, tipo = "comida") {
     const novoItem = document.createElement("li");
 
     const novoCheck = document.createElement("input");
     novoCheck.type = "checkbox";
     novoCheck.classList.add("check-custom");
-    novoCheck.style.marginRight = "10px";
     novoCheck.checked = marcado;
 
     const spanTexto = document.createElement("span");
@@ -37,7 +54,11 @@ function criarItem(texto, marcado = false) {
     novoItem.appendChild(spanTexto);
     novoItem.appendChild(remover);
 
-    lista.appendChild(novoItem);
+    if (tipo === "comida") {
+        listaComida.appendChild(novoItem);
+    } else {
+        listaLimpeza.appendChild(novoItem);
+    }
 
     novoCheck.addEventListener("change", function () {
         spanTexto.style.textDecoration = novoCheck.checked ? "line-through" : "none";
@@ -49,27 +70,29 @@ function criarItem(texto, marcado = false) {
     remover.addEventListener("click", function () {
         novoItem.remove();
         salvarLista();
-        mostrarLista();
     });
+
+    mostrarListas();
 }
 
-function mostrarLista() {
-    const containerFoods = document.getElementById("container-foods");
-    containerFoods.style.display = lista.children.length > 0 ? "block" : "none";
+function mostrarListas() {
+    containerFoods.style.display = listaComida.children.length > 0 ? "block" : "none";
+    containerCleaning.style.display = listaLimpeza.children.length > 0 ? "block" : "none";
 }
 
 but.addEventListener("click", function () {
     const valor = input.value.trim();
+    const tipo = categoria.value;
     if (valor !== "") {
-        criarItem(valor);
+        criarItem(valor, false, tipo);
         salvarLista();
-        mostrarLista();
         input.value = "";
     }
 });
 
 window.addEventListener("DOMContentLoaded", function () {
-    const itensSalvos = JSON.parse(localStorage.getItem("listaCompras")) || [];
-    itensSalvos.forEach(item => criarItem(item.texto, item.marcado));
-    mostrarLista();
+    const itensSalvos = JSON.parse(localStorage.getItem("listaCompras")) || { comida: [], limpeza: [] };
+    itensSalvos.comida.forEach(item => criarItem(item.texto, item.marcado, "comida"));
+    itensSalvos.limpeza.forEach(item => criarItem(item.texto, item.marcado, "limpeza"));
+    mostrarListas();
 });

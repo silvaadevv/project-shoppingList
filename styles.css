@@ -11,6 +11,13 @@ body {
 h1 {
     color: #111827;
     margin-bottom: 10px;
+    text-align: center;
+}
+
+h2 {
+    margin: 20px auto 10px auto;
+    width: 400px;
+    color: #111827;
 }
 
 .container {
@@ -23,31 +30,18 @@ h1 {
     border-color: #D1D5DB;
 }
 
-img {
-    width: 100px;
-    position: fixed;
-    top: 65px;
-}
-
-.header {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .main {
     display: flex;
+    gap: 10px;
 }
 
-.novo-item {
+.novo-item, #categoria {
     border-radius: 10px;
-    text-align: center;
-    padding: 4px 0;
-    margin-right: 10px;
+    padding: 4px 8px;
     background-color: #F3F4F6;
-    border-color: #D1D5DB;
+    border: 1px solid #D1D5DB;
     color: #374151;
 }
-
 
 #adicionar {
     border-radius: 10px;
@@ -57,7 +51,7 @@ img {
     cursor: pointer;
     text-align: center;
     transition: 0.5s;
-    border-color: #111827;
+    border: 1px solid #111827;
 }
 
 #adicionar:hover {
@@ -70,7 +64,7 @@ img {
 
 .lista {
     width: 400px;
-    margin: 50px auto;
+    margin: 10px auto 30px auto;
     padding: 10px;
     border: 2px solid black;
     border-radius: 25px;
@@ -140,7 +134,8 @@ li {
 
 @media (max-width: 900px) {
     .container,
-    #container-foods {
+    #container-foods,
+    #container-cleaning {
         width: 95%;
         max-width: 350px;
         margin: 20px;
@@ -156,17 +151,11 @@ li {
         box-sizing: border-box;
     }
 
-    .novo-item {
-        width: 100%;
-        padding: 6px 10px;
-        margin-right: 0;
-        text-align: left;
-        box-sizing: border-box;
-    }
-
+    .novo-item,
+    #categoria,
     #adicionar {
         width: 100%;
-        padding: 6px;
+        padding: 6px 10px;
         box-sizing: border-box;
     }
 
@@ -182,14 +171,8 @@ li {
         align-items: center;
     }
 
-    .header img {
-        display: none;
-    }
 
     body, html {
-    overflow-x: hidden;
+        overflow-x: hidden;
+    }
 }
-
-    
-}
-
