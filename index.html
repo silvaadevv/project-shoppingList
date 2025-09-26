@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./img/favicon.png" type="image/png">
     <title>Lista de Compras</title>
 </head>
@@ -18,30 +17,32 @@
 
         <h1>Lista de Compras</h1>
 
-
-
         <div class="main">
             <input type="text" placeholder="Itens" class="novo-item">
-
             <select id="categoria">
                 <option value="comida">🍎 Comida</option>
                 <option value="limpeza">🧹 Limpeza</option>
             </select>
-
-            <button id="adicionar">adicionar item</button>
+            <button id="adicionar">Adicionar</button>
         </div>
     </div>
 
-    <div id="container-foods">
+    <div id="container-foods" class="container-list">
         <h2>🍎 Comidas</h2>
         <ol class="lista comida-lista"></ol>
+        <div class="total"></div>
     </div>
 
-    <div id="container-cleaning">
+    <div id="container-cleaning" class="container-list">
         <h2>🧹 Produtos de Limpeza</h2>
         <ol class="lista limpeza-lista"></ol>
+        <div class="total"></div>
     </div>
 
-    <script src="./scripts.js"></script>
+    <div id="total-geral" class="container-list" style="display:none; text-align:right; font-weight:bold; margin:20px auto;">
+        Total Geral: R$ 0.00
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

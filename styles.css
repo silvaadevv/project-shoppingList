@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: "Jost", sans-serif;
 }
 
@@ -8,26 +9,22 @@ body {
     background-color: #F9FAFB;
 }
 
-h1 {
+h1, h2 {
     color: #111827;
-    margin-bottom: 10px;
     text-align: center;
 }
 
-h2 {
-    margin: 20px auto 10px auto;
-    width: 400px;
-    color: #111827;
+h1 {
+    margin-bottom: 10px;
 }
 
 .container {
     width: 400px;
     margin: 50px auto;
     padding: 20px;
-    border: 2px solid black;
     border-radius: 25px;
-    background-color: #FFFFFF;
-    border-color: #D1D5DB;
+    background-color: #fff;
+    border: 2px solid #D1D5DB;
 }
 
 .main {
@@ -37,68 +34,68 @@ h2 {
 
 .novo-item, #categoria {
     border-radius: 10px;
-    padding: 4px 8px;
-    background-color: #F3F4F6;
+    padding: 6px;
     border: 1px solid #D1D5DB;
-    color: #374151;
+    background-color: #F3F4F6;
+    flex: 1;
 }
 
 #adicionar {
     border-radius: 10px;
-    padding: 4px 10px;
-    background-color: #3B82F6;
-    color: #FFFFFF;
-    cursor: pointer;
-    text-align: center;
-    transition: 0.5s;
+    padding: 6px 10px;
     border: 1px solid #111827;
+    background-color: #3B82F6;
+    color: #fff;
+    cursor: pointer;
 }
 
 #adicionar:hover {
     background-color: #2563EB;
 }
 
-.novo-item::placeholder {
-    opacity: 50%;
+.container-list {
+    width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #fff;
+    border: 2px solid #D1D5DB;
 }
 
 .lista {
-    width: 400px;
-    margin: 10px auto 30px auto;
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 25px;
-    background-color: #FFFFFF;
-    border-color: #D1D5DB;
-}
-
-ol {
     list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
 }
 
 li {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
+}
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .check-custom {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     width: 20px;
     height: 20px;
     border: 2px solid #D1D5DB;
     border-radius: 6px;
-    display: inline-block;
-    position: relative;
     cursor: pointer;
-    background-color: #FFFFFF;
-    margin-right: 10px;
-    transition: all 0.2s ease-in-out;
-}
-
-.check-custom:hover {
-    border-color: #3B82F6;
+    appearance: none;
+    background-color: #fff;
+    position: relative;
 }
 
 .check-custom:checked {
@@ -110,69 +107,53 @@ li {
     content: "";
     position: absolute;
     left: 5px;
-    top: 1px; 
+    top: 1px;
     width: 5px;
     height: 10px;
-    border: solid #FFFFFF;
+    border: solid #fff;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
 
-.remove-btn {
-    margin-left: auto;
-    cursor: pointer;
-    font-size: 16px;
-    color: #EF4444;
-    padding: 2px 6px;
-    border-radius: 6px;
-    transition: background 0.3s;
+.preco-item {
+    width: 80px;
+    padding: 3px 6px;
+    border-radius: 8px;
+    border: 1px solid #D1D5DB;
+    background-color: #F3F4F6;
+    text-align: right;
+    display: none;
 }
 
-.remove-btn:hover {
-    background-color: #FEE2E2;
+.remove-btn {
+    cursor: pointer;
+    color: #EF4444;
+    font-size: 16px;
+}
+
+.total {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 5px;
 }
 
 @media (max-width: 900px) {
-    .container,
-    #container-foods,
-    #container-cleaning {
+    .container, .container-list {
         width: 95%;
         max-width: 350px;
-        margin: 20px;
+        margin: 20px auto;
         padding: 15px;
-        box-sizing: border-box;
     }
 
     .main {
-        display: flex;
         flex-direction: column;
-        gap: 10px;
+    }
+
+    .novo-item, #categoria, #adicionar {
         width: 100%;
-        box-sizing: border-box;
     }
 
-    .novo-item,
-    #categoria,
-    #adicionar {
-        width: 100%;
-        padding: 6px 10px;
-        box-sizing: border-box;
-    }
-
-    .lista {
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-    }
-
-    .lista li {
-        flex-wrap: wrap;
-        gap: 8px;
-        align-items: center;
-    }
-
-
-    body, html {
-        overflow-x: hidden;
+    .preco-item {
+        max-width: 120px;
     }
 }
